@@ -3,9 +3,10 @@
         <title>Recipe List</title>
     </head>
     <body>
+        <h1><a href = '/recipes/list'>Recipe Book</a></h1>
         <ul>
             {% for recipe in recipes %}
-                <li><a href="{{link.recipe}}">{{name.recipe}}</a></li>
+                <li><a href="{{recipe.link}}">{{recipe.name}}</a></li>
             {% endfor %}
         </ul>
     </body>

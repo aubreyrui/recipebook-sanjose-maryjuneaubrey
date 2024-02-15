@@ -68,7 +68,8 @@ def recipe_list(request):
     return render(request, 'recipe_list.html', rlist)
 
 def recipe1(request):
-    {
+    
+    r1 = {
     "name": "Recipe 1",
     "ingredients": [
         {
@@ -94,10 +95,10 @@ def recipe1(request):
     ],
     "link": "/recipe/1"
 }
-    return render(request, 'recipe_list.html', recipe1)
+    return render(request, 'recipe.html', r1)
 
 def recipe2(request):
-    {
+    r2 = {
     "name": "Recipe 2",
     "ingredients": [
         {
@@ -131,7 +132,7 @@ def recipe2(request):
     ],
     "link": "/recipe/2"
 }
-    return render(request, 'recipe.html', recipe2)
+    return render(request, 'recipe.html', r2)
 
 
 # Create your views here.
