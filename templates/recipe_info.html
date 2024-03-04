@@ -6,8 +6,8 @@
         <h1><a href = '/recipes/list'>Recipe Book</a></h1>
         <h2>{{name}}</h2>
         <ul>
-            {% for ingredient in ingredients %}
-                <li>{{ingredient.quantity}} of {{ingredient.name}}</li>
+            {% for ingredient in recipe.ingredients.all %}
+                <li>{{ingredient.ingredient.name}} - {{ingredient.quantity}}</li>
             {% endfor %}
         </ul>
     </body>
