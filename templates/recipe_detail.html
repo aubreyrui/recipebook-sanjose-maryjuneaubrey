@@ -3,6 +3,13 @@
         <title>Recipe Book</title>
     </head>
     <body>
+        {% if request.user.is_authenticated %}
+        <h1>Hello {{ request.user.username }}</h1>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+
         <h1><a href = '/recipes/list'>Recipe Book</a></h1>
         <h2>{{name}}</h2>
         <ul>
@@ -10,5 +17,6 @@
                 <li>{{ingredient.ingredient.name}} - {{ingredient.quantity}}</li>
             {% endfor %}
         </ul>
+        {% endif %}
     </body>
 </html>
