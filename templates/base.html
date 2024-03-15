@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8"/>
+        <meta name="keywords" content="foo,bar" />
+        <meta name="description" content="foo"/>
+        <title>
+                {% block title %}
+                Recipe Book
+                {% endblock title%}
+        </title>
+        </head>
+        <body>
+                <h1>
+                        <a href="{% url 'ledger:recipes' %}">Recipes</a>
+                </h1>
+                {% if request.user.is_authenticated %}
+                        <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                        </form>
+                {% else %}
+                        {% if request.get_full_path != '/accounts/login/' %}
+                                <a href="{% url 'login' %}"">Login</a>
+                        {% endif %}     
+                {% endif %}
+                        <div>
+                                {% block content %}
+                                {% endblock content %}
+                        </div>
+        </body>
+</html>

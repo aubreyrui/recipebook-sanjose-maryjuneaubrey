@@ -1,22 +1,17 @@
-<html>
-    <head>
-        <title>Recipe Book</title>
-    </head>
-    <body>
-        {% if request.user.is_authenticated %}
-        <h1>Hello {{ request.user.username }}</h1>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
+{% extends "base.html" %}
+{% load static %}
 
-        <h1><a href = '/recipes/list'>Recipe Book</a></h1>
-        <h2>{{name}}</h2>
+{% block title %} 
+{{recipe.name}}
+{% endblock title %}
+        <h2>{{recipe.name}}</h2>
+        {% block content %}
+        <h3>Made by {{ recipe.author }}</h3>
         <ul>
             {% for ingredient in recipe.ingredients.all %}
                 <li>{{ingredient.ingredient.name}} - {{ingredient.quantity}}</li>
             {% endfor %}
         </ul>
-        {% endif %}
-    </body>
-</html>
+        <br>
+        <h3><a href='/recipes/list'>Return to the Recipe List</a></h3>
+        {% endblock content %}

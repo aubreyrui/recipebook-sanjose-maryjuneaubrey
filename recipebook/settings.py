@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ledger'
+    'ledger',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -121,8 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/recipe/list'
-LOGOUT_REDIRECT_URL = '/accounts/'
+LOGIN_REDIRECT_URL = '/recipes/list'
+LOGOUT_REDIRECT_URL = '/accounts/login'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
